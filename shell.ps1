@@ -14,8 +14,7 @@ $ie.Navigate( $url )
 while( $ie.busy){Start-Sleep 1}
 $ie.Document.getElementById("email_field").value = $username
 $ie.Document.getElementById("password_field").value = $passwdPlain
-$confirmButtom = $ie.Document.getElementsByTagName("button")
-$confirmButtom.click()
+($ie.Document.getElementsByTagName("button") | ? { $_.className -eq "button button_wide button_primary"}).click()
 # ----------------------------------------------------------------------
 # Start-Sleep -Seconds '15'
 # $ie.Navigate( 'google.com' )

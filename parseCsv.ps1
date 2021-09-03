@@ -1,3 +1,4 @@
+# -----------------------------Search needed Events in CSV--------------------------------------------
 $pathToFile = "C:\Users\a.bobkov\Desktop\events.csv\events.csv"
 $SearchItems = "icmp-event","check"
 
@@ -16,5 +17,6 @@ Foreach($Term in $SearchItems){
     $ListEntry.Count = ($GrpObjResults | Where-Object {$_.Name -eq $Term}).Count
     $Results += $ListEntry
 }
-
+# ------------------------------------------------------------------------------------------------------
 $Results
+Remove-Item -Path $pathToFile -Force

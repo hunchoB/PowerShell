@@ -6,6 +6,7 @@ $passwordSecureString = Read-Host 'Enter password' -AsSecureString
 $passwdPlain = [Runtime.InteropServices.Marshal]::PtrToStringAuto(
     [Runtime.InteropServices.Marshal]::SecureStringToBSTR($passwordSecureString))
 # ---------------------------------------------------------------------
+
 # ----------------------Autorization Form-----------------------------
 $ie = New-Object -comobject InternetExplorer.Application 
 $ie.visible = $true 
@@ -17,18 +18,10 @@ $ie.Document.getElementById("password_field").value = $passwdPlain
 ($ie.Document.getElementsByTagName("button") | ? { $_.className -eq "button button_wide button_primary"}).click()
 while( $ie.busy){Start-Sleep 1} 
 # ----------------------------------------------------------------------
-# Start-Sleep -Seconds '15'
-# $ie.Navigate( 'google.com' )
-# Start-Process -FilePath 'C:\Program Files\Google\Chrome\Application\chrome.exe' -ArgumentList $url
-
-
-
 
 # --------------------Delay-----------------
 # Start-Sleep -Seconds '15'
-# --------------------Delay-----------------
-
-# Stop-Process -Name 'Chrome' 
+# -------------------------------------------
 
 #  -------------------------------Send message to Telegram-----------------------------------------------
 # $token = "***"

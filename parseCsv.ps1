@@ -19,4 +19,4 @@ Foreach($Term in $SearchItems){
 }
 # ------------------------------------------------------------------------------------------------------
 $Results
-Remove-Item -Path $pathToFile -Force
+# Remove-Item -Path $pathToFile -Force

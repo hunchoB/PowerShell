@@ -31,3 +31,16 @@ $chromeDriver.FindElementByXPath("//a[@id='button-2672']").Click()
 # $chromeDriver.Close() 
 # $chromeDriver.Quit()
 # ------------------------------------------------------------- 
+
+
+# --------------------Delay-----------------
+# Start-Sleep -Seconds '15' ACTIVATE WHEN IT WILL BE REALIZED
+# -------------------------------------------
+
+#  -------------------------------Send message to Telegram-----------------------------------------------
+# $token = "***"
+# $chat_id = "****"
+# $text = 'C:\Users\User\Desktop\networks.pdf'
+# $URI = "https://api.telegram.org/bot" + $token + "/sendMessage?chat_id=" + $chat_id + "&text=" + $text
+# $Request = Invoke-RestMethod -URI ($URI)
+#  ------------------------------------------------------------------------------------------------------ 

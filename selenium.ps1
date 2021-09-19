@@ -1,18 +1,18 @@
 $url = 'http://10.61.63.13/#ids_main_wrapper/events_tabs/search2Set'
 
 # ----------------Enter credentials----------------------------------
-# $username = Read-Host 'Enter Login'
-# $passwordSecureString = Read-Host 'Enter password' -AsSecureString
-# $passwdPlain = [Runtime.InteropServices.Marshal]::PtrToStringAuto(
-#     [Runtime.InteropServices.Marshal]::SecureStringToBSTR($passwordSecureString))
+$username = Read-Host 'Enter Login'
+$passwordSecureString = Read-Host 'Enter password' -AsSecureString
+$passwdPlain = [Runtime.InteropServices.Marshal]::PtrToStringAuto(
+    [Runtime.InteropServices.Marshal]::SecureStringToBSTR($passwordSecureString))
 # ---------------------------------------------------------------------
 
 
-# Import-Module "D:\MEGA\MEGAsync\code\PowerShell\WebDriver.dll"
+# Import-Module "YourPathToWebDriver.dll"
 $chromeDriver = New-Object OpenQA.Selenium.Chrome.ChromeDriver
 $chromeDriver.Navigate().GoToUrl($url)
-$chromeDriver.FindElementById("textfield-1185-inputEl").SendKeys()
-$chromeDriver.FindElementById("textfield-1187-inputEl").SendKeys()
+$chromeDriver.FindElementById("textfield-1185-inputEl").SendKeys($username)
+$chromeDriver.FindElementById("textfield-1187-inputEl").SendKeys($passwdPlain)
 $chromeDriver.FindElementById("button-1190-btnWrap").Click()
 
 $chromeDriver.FindElementByXPath("//a[@class='x-tab addNewReportSet-button x-unselectable x-tab-after-title x-box-item x-tab-default x-noicon x-tab-noicon x-tab-default-noicon x-top x-tab-top x-tab-default-top']").Click()

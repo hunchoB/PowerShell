@@ -1,5 +1,5 @@
 $url = 'http://10.61.63.13/#ids_main_wrapper/events_tabs/search2Set'
-
+$PSDefaultParameterValues = @{ '*:Encoding' = 'utf8' }
 # ----------------Enter credentials----------------------------------
 $username = Read-Host 'Enter Login'
 $passwordSecureString = Read-Host 'Enter password' -AsSecureString
@@ -8,7 +8,7 @@ $passwdPlain = [Runtime.InteropServices.Marshal]::PtrToStringAuto(
 # ---------------------------------------------------------------------
 
 
-# Import-Module "YourPathToWebDriver.dll"
+# Import-Module "D:\MEGA\MEGAsync\code\PowerShell\WebDriver.dll"
 $chromeDriver = New-Object OpenQA.Selenium.Chrome.ChromeDriver
 $chromeDriver.Navigate().GoToUrl($url)
 $chromeDriver.FindElementById("textfield-1185-inputEl").SendKeys($username)
@@ -34,7 +34,7 @@ $chromeDriver.FindElementByXPath("//a[@id='button-2672']").Click()
 
 
 # --------------------Delay-----------------
-# Start-Sleep -Seconds '15' ACTIVATE WHEN IT WILL BE REALIZED
+# Start-Sleep -Seconds '15'   #ACTIVATE WHEN IT WILL BE REALIZED
 # -------------------------------------------
 
 #  -------------------------------Send message to Telegram-----------------------------------------------

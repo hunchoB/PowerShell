@@ -1,8 +1,8 @@
 # -----------------------------Search needed Events in CSV--------------------------------------------
-$pathToFile = "C:\Users\a.bobkov\Desktop\events.csv\events.csv"
-$SearchItems = "icmp-event","check"
+$pathToParse = "C:\Users\a.bobkov\Downloads\events.csv\events.csv"
+$SearchItems = "trojan-activity","attempted-dos", "malware-cnc", "web-application-attack"
 
-$GrpObjResults = Import-Csv $pathToFile -Delimiter ";" | Where-Object {$_.Class -in $SearchItems} | Group-Object Class -NoElement
+$GrpObjResults = Import-Csv $pathToParse -Delimiter ";" | Where-Object {$_.Class -in $SearchItems} | Group-Object Class -NoElement
 
 $ObjProps = @{
     Name = [String]
@@ -19,4 +19,4 @@ Foreach($Term in $SearchItems){
 }
 # ------------------------------------------------------------------------------------------------------
 $Results
-# Remove-Item -Path $pathToFile -Force
+Remove-Item -Path "C:\Users\a.bobkov\Downloads\events.csv" -Recurse -Force -Confirm:$false

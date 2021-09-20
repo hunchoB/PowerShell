@@ -1,14 +1,13 @@
 $url = 'http://10.61.63.13/#ids_main_wrapper/events_tabs/search2Set'
-$PSDefaultParameterValues = @{ '*:Encoding' = 'utf8' }
-# ----------------Enter credentials----------------------------------
+#  ----------------Enter credentials----------------------------------
 $username = Read-Host 'Enter Login'
 $passwordSecureString = Read-Host 'Enter password' -AsSecureString
 $passwdPlain = [Runtime.InteropServices.Marshal]::PtrToStringAuto(
     [Runtime.InteropServices.Marshal]::SecureStringToBSTR($passwordSecureString))
-# ---------------------------------------------------------------------
+# # ---------------------------------------------------------------------
 
 
-# Import-Module "D:\MEGA\MEGAsync\code\PowerShell\WebDriver.dll"
+Import-Module "C:\Users\a.bobkov\Desktop\script\WebDriver.dll"
 $chromeDriver = New-Object OpenQA.Selenium.Chrome.ChromeDriver
 $chromeDriver.Navigate().GoToUrl($url)
 $chromeDriver.FindElementById("textfield-1185-inputEl").SendKeys($username)
@@ -25,22 +24,26 @@ $chromeDriver.FindElementByXPath("//li[contains(text(),'web-application-attack')
 $chromeDriver.FindElementByXPath("//li[contains(text(),'attempted-dos')]").Click()
 $chromeDriver.FindElementByXPath("//li[contains(text(),'malware-cnc')]").Click()
 $chromeDriver.FindElementByXPath("//li[contains(text(),'trojan-activity')]").Click()
+$chromeDriver.FindElementByXPath("//input[@name='period_num']").Clear()
+$chromeDriver.FindElementByXPath("//input[@name='period_num']").SendKeys("60")
 $chromeDriver.FindElementByXPath("//a[@id='button-2672']").Click()
-# Start-Sleep -Seconds '15'
-# ----------Close Chrome and Stop ChromeDriverProcess----------
-# $chromeDriver.Close() 
-# $chromeDriver.Quit()
-# ------------------------------------------------------------- 
+Start-Sleep -Seconds '15'
+$chromeDriver.FindElementByXPath("//a[@id='button-2579']").Click()
+$chromeDriver.FindElementByXPath("//a[@id='button-2738']").Click()
+Start-Sleep -Seconds '15'
+# # ----------Close Chrome and Stop ChromeDriverProcess----------
+$chromeDriver.Close() 
+$chromeDriver.Quit()
+# # ------------------------------------------------------------- 
 
 
-# --------------------Delay-----------------
-# Start-Sleep -Seconds '15'   #ACTIVATE WHEN IT WILL BE REALIZED
-# -------------------------------------------
+# # --------------------Delay-----------------
+# # Start-Sleep -Seconds '15'   #ACTIVATE WHEN IT WILL BE REALIZED
+# # -------------------------------------------
 
 #  -------------------------------Send message to Telegram-----------------------------------------------
-# $token = "***"
-# $chat_id = "****"
-# $text = 'C:\Users\User\Desktop\networks.pdf'
-# $URI = "https://api.telegram.org/bot" + $token + "/sendMessage?chat_id=" + $chat_id + "&text=" + $text
-# $Request = Invoke-RestMethod -URI ($URI)
-#  ------------------------------------------------------------------------------------------------------ 
+$token = "******"
+$chat_id = "*****"
+$URI = "https://api.telegram.org/bot" + $token + "/sendMessage?chat_id=" + $chat_id + "&text=" + $text
+$Request = Invoke-RestMethod -URI ($URI)
+#------------------------------------------------------------------------------------------------------ 
